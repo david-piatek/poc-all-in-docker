@@ -1,8 +1,6 @@
 # https://taskfile.dev
 version: '3'
 
-dotenv: ['.env']
-
 tasks:
   init:
     desc: Initialize environment
@@ -10,12 +8,20 @@ tasks:
     cmds:
       - echo init
 
+  build:
+    desc: build application
+    silent: true
+    cmds:
+      - go build
+
+  run:
+    desc: Run application
+    silent: true
+    cmds:
+      - go run main.go
+
   default:
    desc: default
    silent: true
    cmds:
      - task --list-all
-includes:
-  docker:
-    dir: ./ops/docker
-    taskfile: ./ops/docker/Taskfile.yaml
